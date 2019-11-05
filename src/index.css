@@ -1,0 +1,9 @@
+#app > h1 {
+  text-align: right;
+  color: red;
+}
+
+#app > h2 {
+  text-align: right;
+  color: orange;
+}
