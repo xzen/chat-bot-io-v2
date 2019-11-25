@@ -20,6 +20,7 @@
   "homepage": "https://github.com/xzen/chat-bot-io-v2#readme",
   "devDependencies": {
     "@babel/core": "^7.6.4",
+    "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "dom-loader": "^1.0.4",
