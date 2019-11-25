@@ -6,6 +6,79 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="row">
+        <div class="col">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Chat Bot 2.0</a>
+          </nav>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Contacts list -->
+        <div class="col-3">
+          <ul class="tchat--contacts list-group ml-2 mt-2">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/theory-1552510536.jpg?crop=0.501xw:1.00xh;0.0173xw,0&resize=480:*" width="50" alt="avatar" class="rounded-circle">
+              <h5 class="display-5 mt-2">Sansa</h5>
+              <span class="badge badge-primary badge-pill">12</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Tchat -->
+        <div class="col-9">
+          <!-- Messages -->
+          <div class="tchat--content row mt-2 mr-2">
+            <div class="tchat--messages col">
+              <!-- Messages received -->
+              <div class="row mb-1">
+                <div class="col-6">
+                  <div class="card">
+                    <h5 class="card-header">
+                      <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/theory-1552510536.jpg?crop=0.501xw:1.00xh;0.0173xw,0&resize=480:*" width="50" alt="avatar" class="rounded-circle">
+                    </h5>
+                    <div class="card-body">
+                      <h5 class="card-title">Bonjour à toi !</h5>
+                      <p class="card-text">Sansa - 25/11/19 9:43</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6"></div>
+              </div>
+              <!-- Messages send -->
+              <div class="row mb-1">
+                <div class="col-6"></div>
+                <div class="col-6">
+                  <div class="card">
+                    <h5 class="card-header">
+                      <img src="https://png.pngtree.com/svg/20161212/f93e57629c.svg" width="50" alt="avatar" class="rounded-circle">
+                    </h5>
+                    <div class="card-body">
+                      <h5 class="card-title">Bonjour Sansa !</h5>
+                      <p class="card-text">25/11/2019 - 09:38</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Input text -->
+          <div class="row mt-3 mr-2">
+            <div class="col">
+              <form>
+                <div class="form-row align-items-center">
+                  <div class="col-11">
+                    <input type="text" class="tchat--input form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
+                  </div>
+                  <div class="col-1">
+                    <button type="submit" class="tchat--button btn btn-dark mb-2">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

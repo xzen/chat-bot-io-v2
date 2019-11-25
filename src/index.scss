@@ -1,16 +1,8 @@
-$color: red;
-$color2: blue;
+@charset "utf-8";
 
-@mixin test($color) {
-  text-align: right;
-  color: $color;
-}
-
-#app {
-  > h1 {
-    @include test($color);
-  }
-  > h2 {
-    @include test($color2);
-  }
+.tchat--content {
+  position: relative;
+  overflow-y: scroll;
+  height: 83vh;
+  width: 100%;
 }
