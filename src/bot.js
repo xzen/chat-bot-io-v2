@@ -8,7 +8,6 @@ class Bot {
    * @param {String} value
    */
   findActions(value) {
-    // test
     return this.entity.actions
       .map((actions) => actions.keyWords
         .map((keyWord) => (keyWord === value ? actions.response() : false))
