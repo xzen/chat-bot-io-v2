@@ -13,12 +13,6 @@ class Tchat {
     };
 
     tchatMessages.innerHTML += this.tplMessageReceived(item);
-    tchatMessages.innerHTML += this.tplMessageReceived(item);
-    tchatMessages.innerHTML += this.tplMessageReceived(item);
-    tchatMessages.innerHTML += this.tplMessageReceived(item);
-    tchatMessages.innerHTML += this.tplMessageReceived(item);
-    tchatMessages.innerHTML += this.tplMessageReceived(item);
-    tchatMessages.innerHTML += this.tplMessageReceived(item);
 
     tchatContacts.innerHTML += this.tplContact(item);
 
@@ -124,6 +118,4 @@ class Tchat {
   }
 }
 
-const tchat = new Tchat();
-
-tchat.render();
+export default Tchat;
