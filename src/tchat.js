@@ -22,13 +22,12 @@ class Tchat {
    */
   tplContact(item) {
     const { id, avatar, name } = item;
-    const count = document.querySelectorAll(`.${id}`).length;
 
     return `
-      <li class="list-group-item d-flex justify-content-between align-items-center">
+      <li class="list-group-${id} list-group-item d-flex justify-content-between align-items-center">
         <img src="${avatar}" width="50" alt="avatar" class="rounded-circle">
         <h5 class="display-5 mt-2">${name}</h5>
-        <span class="badge badge-primary badge-pill">${count}</span>
+        <span class="badge badge-primary badge-pill">0</span>
       </li>`;
   }
 
@@ -113,8 +112,20 @@ class Tchat {
 
       tchatMessages.innerHTML += this.tplMessageSend(messageSend);
 
+      document.querySelector('.tchat--input').value = '';
+
       this.botsResponse(messageSend);
+      this.scrollTop();
     });
+  }
+
+  /**
+   * scroll top
+   */
+  scrollTop() {
+    const el = document.querySelector('.tchat--content');
+
+    el.scrollTop = el.scrollHeight;
   }
 
   /**
@@ -128,9 +139,20 @@ class Tchat {
       const messageBot = this.formatBotResponse(bot.entity, bot.findActions(messageSend));
 
       if (messageBot.message.length) {
+        this.badgeIncrementation(bot.entity.id);
         tchatMessages.innerHTML += this.tplMessageReceived(messageBot);
       }
     });
+  }
+
+  /**
+   * badge incrementation
+   * @param {String} id
+   */
+  badgeIncrementation(id) {
+    const badge = document.querySelector(`.list-group-${id} > .badge`);
+
+    badge.textContent = parseInt(badge.textContent, 10) + 1;
   }
 
   /**
