@@ -1,10 +1,17 @@
+import Bot from './bot';
+
 class Tchat {
+  constructor(bots) {
+    this.bots = bots.map((bot) => new Bot(bot));
+  }
+
   /**
    * render
    */
   render() {
+    this.renderContacts();
+
     const tchatMessages = document.querySelector('.tchat--messages');
-    const tchatContacts = document.querySelector('.tchat--contacts');
     const item = {
       id: 'sansa-123',
       avatar: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/theory-1552510536.jpg?crop=0.501xw:1.00xh;0.0173xw,0&resize=480:*',
@@ -13,8 +20,6 @@ class Tchat {
     };
 
     tchatMessages.innerHTML += this.tplMessageReceived(item);
-
-    tchatContacts.innerHTML += this.tplContact(item);
 
     this.sendValue();
   }
@@ -37,6 +42,17 @@ class Tchat {
         <h5 class="display-5 mt-2">${name}</h5>
         <span class="badge badge-primary badge-pill">${count}</span>
       </li>`;
+  }
+
+  /**
+   * render contacts
+   */
+  renderContacts() {
+    const tchatContacts = document.querySelector('.tchat--contacts');
+
+    this.bots.forEach((bot) => {
+      tchatContacts.innerHTML += this.tplContact(bot.entity);
+    });
   }
 
   /**
