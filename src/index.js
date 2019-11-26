@@ -8,14 +8,3 @@ import './index.scss';
 const tchat = new Tchat(mockBots);
 
 tchat.render();
-
-// Bots
-// const botSansa = new Bot(mock[0]);
-// const botTyrion = new Bot(mock[1]);
-
-// console.log(botSansa.findActions('/sansa time'));
-// console.log(botTyrion.findActions('/sansa devise'));
-
-// Mock
-// console.log(mock[0].actions[0].response());
-// console.log(mock[1].actions[0].response());

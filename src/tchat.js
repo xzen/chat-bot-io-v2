@@ -10,17 +10,6 @@ class Tchat {
    */
   render() {
     this.renderContacts();
-
-    const tchatMessages = document.querySelector('.tchat--messages');
-    const item = {
-      id: 'sansa-123',
-      avatar: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/theory-1552510536.jpg?crop=0.501xw:1.00xh;0.0173xw,0&resize=480:*',
-      name: 'Sansa',
-      message: 'Bonjour Cyril',
-    };
-
-    tchatMessages.innerHTML += this.tplMessageReceived(item);
-
     this.sendValue();
   }
 
@@ -30,7 +19,6 @@ class Tchat {
    * @param {String} item.id
    * @param {String} item.avatar
    * @param {String} item.name
-   * @param {String} item.message
    */
   tplContact(item) {
     const { id, avatar, name } = item;
@@ -121,9 +109,45 @@ class Tchat {
 
     elBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      const messageSend = this.getInputValue();
 
-      tchatMessages.innerHTML += this.tplMessageSend(this.getInputValue());
+      tchatMessages.innerHTML += this.tplMessageSend(messageSend);
+
+      this.botsResponse(messageSend);
     });
+  }
+
+  /**
+   * bots response
+   * {String} messageSend
+   */
+  botsResponse(messageSend) {
+    const tchatMessages = document.querySelector('.tchat--messages');
+
+    this.bots.forEach((bot) => {
+      const messageBot = this.formatBotResponse(bot.entity, bot.findActions(messageSend));
+
+      if (messageBot.message.length) {
+        tchatMessages.innerHTML += this.tplMessageReceived(messageBot);
+      }
+    });
+  }
+
+  /**
+   * Format bot response
+   * @param {Object} bot
+   * @param {String} message
+   * @return {Object} response
+   */
+  formatBotResponse(bot, message) {
+    const { id, avatar, name } = bot;
+
+    return {
+      id,
+      name,
+      avatar,
+      message,
+    };
   }
 
   /**

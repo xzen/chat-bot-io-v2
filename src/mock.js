@@ -14,7 +14,7 @@ export default [{
     },
   }, {
     title: 'devise',
-    keyWords: ['devise', '/sansa time'],
+    keyWords: ['devise', '/sansa devise'],
     response: () => 'L\'hiver vient',
   }],
 }, {
