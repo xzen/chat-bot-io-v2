@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import Bot from './bot';
 
 class Tchat {
@@ -10,7 +11,9 @@ class Tchat {
    */
   render() {
     this.renderContacts();
+    this.initMessages();
     this.sendValue();
+    this.scrollTop();
   }
 
   /**
@@ -141,6 +144,7 @@ class Tchat {
       if (messageBot.message.length) {
         this.badgeIncrementation(bot.entity.id);
         tchatMessages.innerHTML += this.tplMessageReceived(messageBot);
+        this.saveMessage(messageBot);
       }
     });
   }
@@ -170,6 +174,39 @@ class Tchat {
       avatar,
       message,
     };
+  }
+
+  initMessages() {
+    const cookieMessages = Cookies.get('messages');
+    const tchatMessages = document.querySelector('.tchat--messages');
+
+    if (cookieMessages && Array.isArray(JSON.parse(cookieMessages))) {
+      const messages = JSON.parse(cookieMessages);
+
+      messages.forEach((message) => {
+        tchatMessages.innerHTML += this.tplMessageReceived(message);
+        this.badgeIncrementation(message.id);
+      });
+    }
+  }
+
+  /**
+   * Save message
+   * @param {Object} message
+   */
+  saveMessage(message) {
+    const cookieMessages = Cookies.get('messages');
+
+    if (!cookieMessages) {
+      Cookies.set('messages', JSON.stringify([message]), { expires: 30 });
+
+      return;
+    }
+
+    const messages = JSON.parse(cookieMessages);
+    messages.push(message);
+
+    Cookies.set('messages', JSON.stringify(messages), { expires: 30 });
   }
 
   /**

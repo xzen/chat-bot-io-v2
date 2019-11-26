@@ -1,4 +1,3 @@
-// import Bot from './bot';
 import Tchat from './tchat';
 import mockBots from './mock';
 
